@@ -6,19 +6,22 @@ import pandas as pd
 model = pickle.load(open("model/model.pkl", "rb"))
 columns = pickle.load(open("model/columns.pkl", "rb"))
 
-st.title("🚦 Traffic Prediction")
+st.title("🚦 Smart Traffic Prediction System")
 
-temp = st.number_input("Temperature")
-hour = st.slider("Hour", 0, 23)
-day = st.slider("Day", 0, 6)
+st.write("Predict traffic and get smart suggestions for traffic management")
 
-if st.button("Predict"):
+# Inputs
+temp = st.number_input("🌡️ Temperature")
+hour = st.slider("⏰ Hour", 0, 23)
+day = st.slider("📅 Day (0=Mon, 6=Sun)", 0, 6)
 
-    # Create empty dataframe with all columns
+if st.button("Predict Traffic"):
+
+    # Create input dataframe
     input_data = pd.DataFrame(columns=columns)
     input_data.loc[0] = 0
 
-    # Fill required values
+    # Fill values
     if 'temperature' in input_data:
         input_data['temperature'] = temp
     if 'hour' in input_data:
@@ -28,6 +31,29 @@ if st.button("Predict"):
 
     try:
         prediction = model.predict(input_data)
-        st.success(f"🚗 Traffic Count: {int(prediction[0])}")
+        traffic = int(prediction[0])
+
+        st.success(f"🚗 Predicted Traffic Count: {traffic}")
+
+        # 🚦 CASE STUDY BASED LOGIC
+        st.subheader("📊 Traffic Analysis & Smart Suggestions")
+
+        if traffic < 50:
+            st.info("🟢 Low Traffic")
+            st.write("✔ Smooth traffic flow")
+            st.write("✔ No signal changes required")
+
+        elif 50 <= traffic < 100:
+            st.warning("🟡 Moderate Traffic")
+            st.write("✔ Slight congestion detected")
+            st.write("➡️ Suggest optimizing signal timing")
+
+        else:
+            st.error("🔴 High Traffic Detected")
+            st.write("❗ Heavy congestion likely")
+            st.write("➡️ Increase green signal duration")
+            st.write("➡️ Suggest alternate routes to drivers")
+            st.write("➡️ Enable traffic control measures")
+
     except Exception as e:
         st.error(f"Error: {e}")
