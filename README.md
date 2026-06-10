@@ -106,13 +106,15 @@ streamlit run app.py
 
 ## 🌐 Live Demo
 
-👉 (Add your Streamlit deployment link here)
+👉 https://traffic-flow-prediction-dpbygem5o5rszcqbwrwjuy.streamlit.app/
 
 ---
 
 ## 📷 Output
 
 * Traffic prediction displayed based on input values
+<img width="831" height="887" alt="image" src="https://github.com/user-attachments/assets/367d8c2a-ba21-4672-b705-f0fe7291ae26" />
+
 * User-friendly interface using Streamlit
 
 ---
