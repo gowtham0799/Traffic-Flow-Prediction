@@ -113,7 +113,7 @@ streamlit run app.py
 ## 📷 Output
 
 * Traffic prediction displayed based on input values
-<img width="758" height="865" alt="image" src="https://github.com/user-attachments/assets/1044ea90-08c8-42d6-839b-b49590a612ac" />
+<img width="723" height="792" alt="image" src="https://github.com/user-attachments/assets/e7a2f13f-a231-4b1b-81c5-ab0e0c18fbd3" />
 * User-friendly interface using Streamlit
 
 ---
